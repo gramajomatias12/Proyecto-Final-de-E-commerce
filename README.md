@@ -1,119 +1,76 @@
-# Proyecto-Final-de-E-commerce
-🛒 Proyecto Final Frontend - CompraloYa
-💻 E-commerce dinámico con consumo de API y carrito de compras
+# 🛒 Proyecto Final de E-commerce: CompraloYa
 
-👤 Autoría e Información del Proyecto
+## Autoría e Información del Proyecto
+* **Autor:** Gramajo Matías
+* **Versión:** 1.0 (Proyecto Final)
+* **Fecha de Última Actualización:** 25-11-2025
 
-Autor: Gramajo Matías
+---
 
-Curso: Front End JS
+## 📄 Descripción General
 
-Versión: 2.0
+Este proyecto final consiste en la creación de **CompraloYa**, un sitio web de e-commerce **dinámico e interactivo**. 
 
-Fecha de última actualización: noviembre 2025
+El objetivo principal es aplicar todos los conocimientos del curso, demostrando la correcta aplicación de:
 
+* Estructura semántica HTML
+* Estilos modernos con CSS
+* Manipulación del DOM con JavaScript
+* Lógica básica de un carrito de compras
+* Consumo de APIs
 
-📄 Descripción General
+---
 
-Este proyecto representa la entrega final del curso de Front-End, donde se integran todos los conocimientos adquiridos para el desarrollo de un sitio web completo, moderno y funcional.
+## 📋 Características y Tecnologías Implementadas
 
-El sitio consiste en un e-commerce dinámico e interactivo que consume datos desde una API REST, muestra productos en pantalla y permite al usuario gestionar un carrito de compras, almacenando la información mediante localStorage.
+### 🛠 Tecnologías y Herramientas
+* **HTML:** Estructura semántica de la página.
+* **CSS:** Estilos personalizados.
+* **Formspree:** Para la gestión del envío de datos del formulario de contacto.
+* **JavaScript:** Lógica de la aplicación, interacción con el DOM.
+* **Bootstrap 5:** Framework CSS.
+* **Fake Store API:** API REST gratuita utilizada para obtener datos de productos.
+* **Google Fonts:** Tipografía.
 
-El objetivo principal es demostrar la correcta aplicación de:
+### 🧱 Estructura y Semántica
 
-Estructura semántica HTML
+El documento HTML dividido en las etiquetas semánticas principales:
+* `<header>`
+* `<nav>`
+* `<main>`
+* `<section>`
+* `<footer>`
 
-Diseño responsivo profesional
+### 🎨 Estilos y Diseño
 
-Manipulación del DOM con JavaScript
+* **CSS Externo:** Todos los estilos se gestionan desde un archivo `styles.css`.
+* **Tipografía:** Implementación de fuentes desde **Google Fonts**.
+* **Bootstrap y Flexbox:** El diseño está basado en el sistema de *grid* de Bootstrap, complementado con Flexbox, garantizando una visualización correcta en cualquier dispositivo (móvil, tablet, escritorio).
 
-Consumo de servicios externos
+### 📧 Formulario y Multimedia
 
-🎯 Objetivos del Proyecto
+* **Formulario de Contacto:** Incluye campos para **nombre**, **correo electrónico** y **mensaje**. Es un formulario **funcional** gracias a la integración con **Formspree**.
+* **Contenido Multimedia:** Incorporación de archivos como **imágenes**, **video** o un **iframe** dentro del contenido de la página.
+* **Navegación:** Lista desordenada (`<ul>`) con enlaces de navegación simulada (Inicio, Productos, Contacto, etc.).
 
-Crear una tienda online funcional.
-
-Consumir productos desde una API externa.
-
-Permitir al usuario agregar, eliminar y modificar productos en un carrito.
-
-Mantener persistencia de datos con localStorage.
-
-Aplicar buenas prácticas de accesibilidad y SEO.
-
-Lograr una experiencia de usuario moderna y fluida.
-
-🛠 Tecnologías Utilizadas
-📌 Frontend
-
-HTML5
-Uso de etiquetas semánticas para una correcta estructura:
-
-<header>, <nav>, <main>, <section>, <article>, <aside>, <footer>
-
-CSS3
-
-Diseño responsivo
-
-Flexbox
-
-Bootstrap
-
-Estilos personalizados
-
-JavaScript
-
-Manipulación del DOM
-
-Fetch API para consumo de servicios REST
-
-Manejo de eventos
-
-Carrito dinámico con persistencia en localStorage
+### 🔌 Componentes Dinámicos y API
+* **Consumo de API REST:** Utilización de `fetch` para obtener los productos de la Fake Store API.
+* **Renderizado Dinámico:** Los productos se inyectan en el DOM mediante JavaScript, generando las tarjetas de producto de forma automática.
+* **Carrito de Compras:**
+    * Funcionalidad de **"Añadir al Carrito"** para almacenar productos seleccionados.
+    * Uso de **`localStorage`** para mantener el estado del carrito persistente entre sesiones (el usuario no pierde su carrito al recargar).
+    * Cálculo dinámico de la cantidad de ítems y el precio total.
 
 
-🌐 API Utilizada
+### 🛡️ Accesibilidad y Optimización (SEO)
+* **Etiquetas Semánticas:** El uso de etiquetas como `<main>`, y `<nav>` mejora la comprensión del contenido por parte de los motores de búsqueda y tecnologías asistivas.
+* **Atributos `alt`:** Todas las imágenes dinámicas de los productos incluyen texto alternativo (alt) basado en el nombre del producto de la API, mejorando la accesibilidad y el SEO.
+* **`viewport`:** Uso de `<meta name="viewport">` para asegurar el correcto escalado responsivo.
 
-Los productos se obtienen mediante una API REST pública: Fake Store API
+---
 
-Provee productos con:
+## 🚀 Despliegue
 
-Imagen
+Este proyecto está alojado en un servicio de *hosting* gratuito (GitHub Pages).
 
-Título
-
-Precio
-
-Descripción
-
-Categoría
-
-🎨 Diseño y Experiencia de Usuario
-
-Cards uniformes de productos.
-
-Carrito lateral tipo panel.
-
-Botones interactivos (+ / - / eliminar).
-
-Adaptabilidad total en desktop y móvil.
-
-♿ Accesibilidad y SEO
-
-Se implementaron prácticas para mejorar la accesibilidad y posicionamiento:
-
-Uso correcto de etiquetas semánticas.
-
-Atributos alt en imágenes.
-
-Meta etiquetas SEO.
-
-Navegación clara y jerárquica.
-
-
-🚀 Despliegue
-
-El proyecto se encuentra publicado en GitHub Pages:
-
-🔗 URL del sitio:
-https://gramajomatias12.github.io/...
+**URL Funcional del Sitio:** *https://gramajomatias12.github.io/...*
