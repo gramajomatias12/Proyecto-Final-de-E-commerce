@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CompraloYa | El Marketplace de la Inmediatez</title>
+    <link rel="icon" href="favicon.png"> 
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">
+            <img src="./assets/img/icono2.jpg" alt="CompraloYa Logo - ¡Compra Ahora!">
+        </a>
+
+        <div id="search-bar">
+            <input type="search" id="product-search" placeholder="Buscar productos, categorías o marcas...">
+            <button type="submit">🔍</button>
+        </div>
+
+        <nav id="main-nav">
+            <ul>
+                <li><a href="categories.html">Categorías</a></li>
+                <li><a href="offers.html">Ofertas del Día</a></li>
+                <li><a href="sell.html">Vender</a></li>
+            </ul>
+        </nav>
+
+        <div id="user-actions">
+            <a href="login.html" title="Ingresar o Registrarse">👤 Mi Cuenta</a>
+            <a href="cart.html" id="cart-icon" title="Ver Carrito de Compras">
+                🛒 Carrito (<span id="cart-count">0</span>)
+            </a>
+        </div>
+    </header>
+
+    <main>
+        
+        <section id="hero-banner">
+            <h2>⚡ Ofertas Relámpago Exclusivas ⚡</h2>
+            <p>Encuentra lo que buscas con la velocidad de un rayo.</p>
+        </section>
+
+        <section id="featured-categories" aria-labelledby="section-categories">
+            <h2 id="section-categories">Explora por Categorías</h2>
+            </section>
+
+        <section id="product-listing" aria-labelledby="section-products">
+            <h2 id="section-products">Productos en Tendencia</h2>
+            <div id="product-grid" class="product-grid">
+                </div>
+            </section>
+
+        <aside id="promo-sidebar">
+            <h3>¡Suscríbete a nuestras ofertas!</h3>
+            <p>Recibe notificaciones instantáneas de las mejores gangas.</p>
+        </aside>
+
+    </main>
+
+    <footer>
+        <div class="footer-columns">
+            <section>
+                <h3>CompraloYa</h3>
+                <nav>
+                    <ul>
+                        <li><a href="about.html">Quiénes Somos</a></li>
+                        <li><a href="policies.html">Política de Privacidad</a></li>
+                    </ul>
+                </nav>
+            </section>
+            
+            <section>
+                <h3>Ayuda</h3>
+                <nav>
+                    <ul>
+                        <li><a href="contact.html">Contacto</a></li>
+                        <li><a href="faq.html">Preguntas Frecuentes</a></li>
+                    </ul>
+                </nav>
+            </section>
+            
+            <section>
+                <h3>Síguenos</h3>
+                </section>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 CompraloYa. Todos los derechos reservados. | Datos de prueba: Fake Store API</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
