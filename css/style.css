@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Alike&family=Cherry+Cream+Soda&family=Oranienbaum&family=Space+Grotesk:wght@300..700&display=swap');
+
+* {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+}
+
+body {
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.btn-cart {
+    background-color: #ffc107; /* Amarillo warning, pero más limpio */
+    border: none;
+    padding: 10px 16px;
+    border-radius: 50px;
+    font-size: 1.5rem;
+    position: relative;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hover moderno */
+.btn-cart:hover {
+    background-color: #e0a800;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Focus accesible */
+.btn-cart:focus {
+    outline: 3px solid rgba(255,193,7,0.5);
+    outline-offset: 4px;
+}
+
+/* Badge del carrito */
+.cart-count-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #dc3545;
+    color: white;
+    font-size: 0.75rem;
+    padding: 3px 6px;
+    border-radius: 50%;
+    min-width: 22px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 0 4px rgba(0,0,0,0.2);
+}
+
+.height-imagen {
+   width: 100%;
+   height: 500px;
+   object-fit: cover;
+}
