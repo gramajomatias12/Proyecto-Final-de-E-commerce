@@ -68,7 +68,7 @@ function agregarAlCarrito(id) {
 // =====================================================
 // 5️ FUNCIÓN PARA ACTUALIZAR EL CONTADOR EN PANTALLA
 // =====================================================
-const contadorCarrito = document.getElementById('contador-carrito');
+const contadorCarrito = document.getElementById('cart-count');
 
 function actualizarContador() {
     const carrito = obtenerCarrito();
@@ -87,9 +87,9 @@ function cargarEventosAgregar() {
 }
 // 7️ FUNCIÓN PARA VACIAR EL CARRITO Y RESETEAR CONTADOR
 // ======================================================
-// document.getElementById('vaciar-carrito').addEventListener('click',
-//     () => {
-//         localStorage.removeItem('carrito');
-//         actualizarContador();
-//         alert('Carrito vaciado correctamente');
-// });
+document.getElementById('vaciar-carrito').addEventListener('click',
+    () => {
+        localStorage.removeItem('carrito');
+        actualizarContador();
+        alert('Carrito vaciado correctamente');
+});

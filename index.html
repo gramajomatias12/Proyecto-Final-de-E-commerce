@@ -32,24 +32,26 @@
                     <!-- Navegación Principal -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Productos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#productos-section">Productos</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contact-section">Contacto</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Sobre Nosotros</a></li>
                     </ul>
 
-
-                    <div class="d-flex align-items-center">
-                        <button class="btn btn-cart position-relative" id="view-cart-button" data-bs-toggle="modal"
+                    <div class="cart-wrapper">
+                        <button class="btn-cart" id="view-cart-button" data-bs-toggle="modal"
                             data-bs-target="#cartModal">
                             <i class="fa fa-shopping-cart"></i>
-                            <span class="cart-count-badge" id="contador-carrito">0</span>
+                            <span class="cart-badge" id="cart-count">0</span>
                         </button>
                     </div>
+
+                    <!-- CONTADOR DE PRODUCTOS EN EL CARRITO -->
+                    <button id="vaciar-carrito">Vaciar Carrito</button>
+
                 </div>
             </nav>
         </div>
     </header>
-
 
 
     <section>
@@ -90,16 +92,59 @@
     </section>
 
     <section class="container my-5">
-        <h2 class="text-center mb-4">Nuestros Productos</h2>
+        <h2 class="text-center mb-4" id="productos-section">Nuestros Productos</h2>
         <div class="row" id="productos-container"> </div>
-        
-        <!-- CONTADOR DE PRODUCTOS EN EL CARRITO -->
-        <!-- <button id="vaciar-carrito">Vaciar Carrito</button> -->
 
         <!-- MENSAJE DE CARGA -->
         <div id="mensaje-cargando">Cargando productos, por favor
             espere...</div>
-        
+
+    </section>
+
+    <section>
+        <!-- Sobre nosotros -->
+        <div class="container my-5">
+            <h2 class="text-center mb-4">Sobre Nosotros</h2>
+            <div class="row align-items-center" >
+                <div class="col-md-6">
+                    <img src="./assets/img/sobre-nosotros.jpg" alt="Sobre Nosotros" class="img-fluid rounded">
+                </div>
+                <div class="col-md-6">
+                    <p>En CompraloYa, nos dedicamos a ofrecerte una experiencia de compra en línea excepcional.
+                        Nuestra misión es brindarte productos de alta calidad a precios competitivos, con un
+                        servicio al cliente inigualable. Ya sea que estés buscando lo último en tecnología, moda o
+                        artículos para el hogar, tenemos todo lo que necesitas en un solo lugar.</p>
+                    <p>Fundada en 2020, CompraloYa ha crecido rápidamente gracias a nuestra dedicación a la
+                        satisfacción del cliente y a nuestra amplia selección de productos. Nos esforzamos por
+                        mantenernos actualizados con las últimas tendencias y ofrecerte las mejores ofertas del
+                        mercado.</p>
+                    <p>Gracias por elegir CompraloYa. Estamos aquí para ayudarte en cada paso del camino y hacer que tu
+                        experiencia de compra sea fácil y agradable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="bg-light py-5" id="contact-section">
+        <div class="container">
+            <h2 class="text-center mb-4">Contáctanos</h2>
+            <form id="contact-form" class="mx-auto" style="max-width: 600px;">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Mensaje</label>
+                    <textarea class="form-control" id="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+            </form>
+        </div>
     </section>
 
     <footer class="bg-dark text-white mt-5 pt-4 pb-2">
