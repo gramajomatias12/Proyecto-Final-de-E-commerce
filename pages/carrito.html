@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Carrito de Compras</title>
+    <style>
+        :root{--accent:#0d6efd;--muted:#6c757d}
+        body{font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;padding:20px;background:#f7f8fb;color:#111}
+        .container{max-width:980px;margin:0 auto;background:#fff;padding:20px;border-radius:10px;box-shadow:0 6px 18px rgba(20,20,40,0.06)}
+        h1{margin:0 0 18px;font-size:20px}
+        .empty{padding:40px;text-align:center;color:var(--muted)}
+        table{width:100%;border-collapse:collapse;margin-bottom:18px}
+        th,td{padding:10px;border-bottom:1px solid #eef1f6;text-align:left;vertical-align:middle}
+        th{font-weight:600;color:#374151}
+        img.thumb{width:64px;height:64px;object-fit:cover;border-radius:6px;border:1px solid #e6e9ef}
+        .qty{width:64px;padding:6px;border-radius:6px;border:1px solid #dfe6f0}
+        .actions{display:flex;gap:8px;align-items:center}
+        .btn{background:var(--accent);color:#fff;padding:8px 12px;border-radius:8px;border:none;cursor:pointer}
+        .btn.secondary{background:#e9eefc;color:var(--accent);border:1px solid #cfe0ff}
+        .btn.ghost{background:transparent;color:var(--accent);border:1px solid #e6eefc}
+        .remove{background:#ff5959}
+        .summary{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:8px}
+        .total{font-size:18px;font-weight:700}
+        .muted{color:var(--muted);font-size:14px}
+        @media (max-width:720px){
+            table thead{display:none}
+            table,table tbody,table tr,table td{display:block;width:100%}
+            table tr{margin-bottom:12px;border-bottom:none}
+            td{padding:8px 0;border-bottom:1px solid #f1f4f8}
+            td::before{content:"";display:block;font-weight:600;margin-bottom:6px}
+            td[data-label]::before{content:attr(data-label)}
+            .summary{flex-direction:column;align-items:flex-start}
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Carrito de compras</h1>
+
+        <div id="cartRoot">
+            <!-- contenido dinámico -->
+        </div>
+    </div>
+
+    <script>
+        // Busca una clave de carrito común en localStorage
+        const POSSIBLE_KEYS = ['carrito', 'cart', 'shoppingCart', 'shopping_cart', 'cartItems', 'items'];
+
+        function findCartKey() {
+            for (const key of POSSIBLE_KEYS) {
+                if (localStorage.getItem(key)) return key;
+            }
+            // intenta detectar un valor que parezca un arreglo de objetos
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                const value = localStorage.getItem(key);
+                try {
+                    const parsed = JSON.parse(value);
+                    if (Array.isArray(parsed) && parsed.length && typeof parsed[0] === 'object') {
+                        return key;
+                    }
+                } catch (e) { /* no es JSON válido */ }
+            }
+            return null;
+        }
+
+        const cartKey = findCartKey();
+        function loadCart() {
+            if (!cartKey) return [];
+            try {
+                const parsed = JSON.parse(localStorage.getItem(cartKey));
+                return Array.isArray(parsed) ? parsed : [];
+            } catch {
+                return [];
+            }
+        }
+
+        function saveCart(cart) {
+            if (!cartKey) {
+                // si no había clave, crea una nueva llamada 'carrito'
+                localStorage.setItem('carrito', JSON.stringify(cart));
+            } else {
+                localStorage.setItem(cartKey, JSON.stringify(cart));
+            }
+        }
+
+        function formatCurrency(n) {
+            try {
+                return new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(n);
+            } catch {
+                return '$' + Number(n).toFixed(2);
+            }
+        }
+
+        function createEmptyNode() {
+            const div = document.createElement('div');
+            div.className = 'empty';
+            div.innerHTML = `
+                <p>No hay productos en el carrito.</p>
+                <p class="muted">Agrega productos y se mostrarán aquí.</p>
+            `;
+            return div;
+        }
+
+        function renderCart() {
+            const root = document.getElementById('cartRoot');
+            root.innerHTML = '';
+            const cart = loadCart();
+
+            if (!cart.length) {
+                root.appendChild(createEmptyNode());
+                return;
+            }
+
+            const table = document.createElement('table');
+            table.innerHTML = `
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Subtotal</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            `;
+            const tbody = table.querySelector('tbody');
+
+            cart.forEach((item, index) => {
+                // soporta diferentes nombres de campos
+                const title = item.title || item.name || item.nombre || 'Producto';
+                const price = Number(item.price ?? item.precio ?? item.unitPrice ?? item.cost) || 0;
+                const qty = Number(item.quantity ?? item.qty ?? item.cantidad) || 1;
+                const img = item.image || item.img || item.foto || '';
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td data-label="Producto">
+                        <div style="display:flex;gap:12px;align-items:center">
+                            <img class="thumb" src="${img ? escapeHtml(img) : placeholderDataUrl(title)}" alt="${escapeHtml(title)}"/>
+                            <div>
+                                <div style="font-weight:600">${escapeHtml(title)}</div>
+                                <div class="muted" style="font-size:13px">${escapeHtml(item.variant || item.sku || '')}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td data-label="Precio">${formatCurrency(price)}</td>
+                    <td data-label="Cantidad">
+                        <input class="qty" type="number" min="1" value="${qty}" data-index="${index}">
+                    </td>
+                    <td data-label="Subtotal">${formatCurrency(price * qty)}</td>
+                    <td data-label="">
+                        <div class="actions">
+                            <button class="btn ghost remove" data-index="${index}">Eliminar</button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            // resumen y acciones
+            const summary = document.createElement('div');
+            summary.className = 'summary';
+            const total = cart.reduce((s, it) => {
+                const p = Number(it.price ?? it.precio ?? it.unitPrice ?? it.cost) || 0;
+                const q = Number(it.quantity ?? it.qty ?? it.cantidad) || 1;
+                return s + p * q;
+            }, 0);
+            const count = cart.reduce((s, it) => s + (Number(it.quantity ?? it.qty ?? it.cantidad) || 1), 0);
+
+            summary.innerHTML = `
+                <div>
+                    <div class="muted">Productos en el carrito: <strong>${count}</strong></div>
+                    <div class="total">Total: ${formatCurrency(total)}</div>
+                </div>
+                <div style="display:flex;gap:8px">
+                    <button id="clearBtn" class="btn secondary">Vaciar carrito</button>
+                    <button id="checkoutBtn" class="btn">Finalizar compra</button>
+                </div>
+            `;
+
+            root.appendChild(table);
+            root.appendChild(summary);
+
+            // listeners
+            tbody.addEventListener('input', (e) => {
+                const el = e.target;
+                if (el.matches('.qty')) {
+                    const idx = Number(el.dataset.index);
+                    let val = parseInt(el.value, 10);
+                    if (Number.isNaN(val) || val < 1) val = 1;
+                    el.value = val;
+                    updateItemQuantity(idx, val);
+                }
+            });
+
+            tbody.addEventListener('click', (e) => {
+                const el = e.target;
+                if (el.matches('.remove')) {
+                    const idx = Number(el.dataset.index);
+                    removeItem(idx);
+                }
+            });
+
+            document.getElementById('clearBtn').addEventListener('click', () => {
+                if (!confirm('¿Desea vaciar el carrito?')) return;
+                saveCart([]);
+                renderCart();
+            });
+
+            document.getElementById('checkoutBtn').addEventListener('click', () => {
+                // simulación simple
+                alert('Procediendo a finalizar la compra. Total: ' + formatCurrency(total));
+            });
+        }
+
+        function updateItemQuantity(index, qty) {
+            const cart = loadCart();
+            if (!cart[index]) return;
+            // normaliza nombres
+            if ('quantity' in cart[index]) cart[index].quantity = qty;
+            else if ('qty' in cart[index]) cart[index].qty = qty;
+            else if ('cantidad' in cart[index]) cart[index].cantidad = qty;
+            else cart[index].quantity = qty;
+            saveCart(cart);
+            renderCart();
+        }
+
+        function removeItem(index) {
+            const cart = loadCart();
+            if (index < 0 || index >= cart.length) return;
+            cart.splice(index, 1);
+            saveCart(cart);
+            renderCart();
+        }
+
+        // placeholder de imagen (SVG data URL) con iniciales
+        function placeholderDataUrl(text) {
+            const initials = (text || 'P').trim().split(' ').map(s => s[0]).slice(0,2).join('').toUpperCase();
+            const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><rect width='100%' height='100%' fill='#f1f5f9'/><text x='50%' y='50%' font-family='Arial, Helvetica, sans-serif' font-size='36' fill='#9aa7b9' dominant-baseline='middle' text-anchor='middle'>${escapeHtml(initials)}</text></svg>`;
+            return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+        }
+
+        // pequeña función de escape para insertar valores en atributos/HTML
+        function escapeHtml(str = '') {
+            return String(str)
+                .replaceAll('&', '&amp;')
+                .replaceAll('<', '&lt;')
+                .replaceAll('>', '&gt;')
+                .replaceAll('"', '&quot;')
+                .replaceAll("'", '&#39;');
+        }
+
+        // renderizar al cargar
+        document.addEventListener('DOMContentLoaded', renderCart);
+    </script>
+</body>
+</html>

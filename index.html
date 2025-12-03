@@ -13,7 +13,6 @@
 </head>
 
 <body>
-    <!-- 1. ENCABEZADO Y NAVEGACIÓN GLOBAL -->
     <header class="sticky-top bg-light shadow-sm">
         <div class="container">
             <nav class="navbar navbar-expand-lg">
@@ -34,19 +33,27 @@
                         <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link" href="#productos-section">Productos</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contact-section">Contacto</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Sobre Nosotros</a></li>
                     </ul>
 
-                    <div class="cart-wrapper">
+                    <!-- <div class="cart-wrapper">
                         <button class="btn-cart" id="view-cart-button" data-bs-toggle="modal"
                             data-bs-target="#cartModal">
                             <i class="fa fa-shopping-cart"></i>
                             <span class="cart-badge" id="cart-count">0</span>
                         </button>
+                    </div> -->
+                    <div class="cart-wrapper">
+                        <a href="./pages/carrito.html" class="btn-cart" id="view-cart-link">
+
+                            <i class="fa fa-shopping-cart"></i>
+
+                            <span class="cart-badge" id="cart-count">0</span>
+
+                        </a>
                     </div>
 
                     <!-- CONTADOR DE PRODUCTOS EN EL CARRITO -->
-                    <button id="vaciar-carrito">Vaciar Carrito</button>
+                    <!-- <button id="vaciar-carrito">Vaciar Carrito</button> -->
 
                 </div>
             </nav>
@@ -93,7 +100,8 @@
 
     <section class="container my-5">
         <h2 class="text-center mb-4" id="productos-section">Nuestros Productos</h2>
-        <div class="row" id="productos-container"> </div>
+        <!-- <div class="row" id="productos-container"> </div> -->
+        <div class="row g-4" id="productos-container"></div>
 
         <!-- MENSAJE DE CARGA -->
         <div id="mensaje-cargando">Cargando productos, por favor
@@ -101,54 +109,100 @@
 
     </section>
 
-    <section>
-        <!-- Sobre nosotros -->
-        <div class="container my-5">
-            <h2 class="text-center mb-4">Sobre Nosotros</h2>
-            <div class="row align-items-center" >
-                <div class="col-md-6">
-                    <img src="./assets/img/sobre-nosotros.jpg" alt="Sobre Nosotros" class="img-fluid rounded">
+    <section class="container my-5" id="resenia">
+        <h2 class="text-center mb-4">Reseñas de Clientes</h2>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="mb-2">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="card-text">"Excelente calidad y entrega rápida. Muy recomendado!"</p>
+                        <p class="card-text"><strong>- Juan García</strong></p>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <p>En CompraloYa, nos dedicamos a ofrecerte una experiencia de compra en línea excepcional.
-                        Nuestra misión es brindarte productos de alta calidad a precios competitivos, con un
-                        servicio al cliente inigualable. Ya sea que estés buscando lo último en tecnología, moda o
-                        artículos para el hogar, tenemos todo lo que necesitas en un solo lugar.</p>
-                    <p>Fundada en 2020, CompraloYa ha crecido rápidamente gracias a nuestra dedicación a la
-                        satisfacción del cliente y a nuestra amplia selección de productos. Nos esforzamos por
-                        mantenernos actualizados con las últimas tendencias y ofrecerte las mejores ofertas del
-                        mercado.</p>
-                    <p>Gracias por elegir CompraloYa. Estamos aquí para ayudarte en cada paso del camino y hacer que tu
-                        experiencia de compra sea fácil y agradable.</p>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="mb-2">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="card-text">"Gran variedad de productos y precios competitivos. 100% satisfecho."</p>
+                        <p class="card-text"><strong>- María López</strong></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="mb-2">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="card-text">"Atención al cliente excepcional. Volvería a comprar sin dudarlo."</p>
+                        <p class="card-text"><strong>- Carlos Rodríguez</strong></p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
 
-    <section class="bg-light py-5" id="contact-section">
-        <div class="container">
-            <h2 class="text-center mb-4">Contáctanos</h2>
-            <!-- <p>¿Tienes alguna pregunta o comentario? ¡Nos encantaría saber de ti! </p> -->
-            <!-- <p>Por favor, completa el formulario a continuación y nos pondremos en contacto contigo lo antes posible.</p> -->
-            <form action="https://formspree.io/f/mzzaonrl" method="post" autocomplete="on" id="contact-form" class="mx-auto" style="max-width: 600px;" >
-                <div class="mb-3">
-                    <label for="name" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="name" placeholder="Ingrese su nombre" required>
+    <section class="container my-5">
+        <div class="row">
+            <!-- Main: Sobre Nosotros -->
+            <main class="col-md-8 order-1 order-md-1">
+                <h2 class="text-center mb-4">Sobre Nosotros</h2>
+                <p>En CompraloYa, nos dedicamos a ofrecerte una experiencia de compra en línea excepcional.
+                    Nuestra misión es brindarte productos de alta calidad a precios competitivos, con un
+                    servicio al cliente inigualable. Ya sea que estés buscando lo último en tecnología, moda o
+                    artículos para el hogar, tenemos todo lo que necesitas en un solo lugar.</p>
+                <p>Fundada en 2020, CompraloYa ha crecido rápidamente gracias a nuestra dedicación a la
+                    satisfacción del cliente y a nuestra amplia selección de productos. Nos esforzamos por
+                    mantenernos actualizados con las últimas tendencias y ofrecerte las mejores ofertas del
+                    mercado.</p>
+                <p>Gracias por elegir CompraloYa. Estamos aquí para ayudarte en cada paso del camino y hacer que tu
+                    experiencia de compra sea fácil y agradable.</p>
+            </main>
+
+            <!-- Aside: Formulario de contacto al costado -->
+            <aside id="contact-section" class="col-md-4 order-2 order-md-2">
+                <div class="bg-light p-4 rounded shadow-sm sticky-top" style="top: 20px;">
+                    <h3 class="h5 mb-3">Contáctanos</h3>
+                    <form action="https://formspree.io/f/mzzaonrl" method="post" autocomplete="on" id="contact-form-aside">
+                        <div class="mb-3">
+                            <label for="name-aside" class="form-label">Nombre</label>
+                            <input type="text" name="name" class="form-control" id="name-aside" placeholder="Ingrese su nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email-aside" class="form-label">Correo Electrónico</label>
+                            <input type="email" name="email" class="form-control" id="email-aside" placeholder="Ingrese su correo electrónico" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message-aside" class="form-label">Mensaje</label>
+                            <textarea name="message" class="form-control" id="message-aside" rows="4" placeholder="Ingrese su mensaje" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Enviar Mensaje</button>
+                        <input type="hidden" name="_redirect" value="./gracias.html">
+                    </form>
                 </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Correo Electrónico</label>
-                    <input type="email" class="form-control" id="email" placeholder="Ingrese su correo electrónico" required>
-                </div>
-                <div class="mb-3">
-                    <label for="message" class="form-label">Mensaje</label>
-                    <textarea class="form-control" id="message" rows="4" placeholder="Ingrese su mensaje" required></textarea>
-                </div>
-                <input type="hidden" name="_redirect" value="./gracias.html">
-                <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
-            </form>
+            </aside>
         </div>
     </section>
+    
 
     <footer class="bg-dark text-white mt-5 pt-4 pb-2">
         <div class="container">
@@ -161,8 +215,8 @@
                     <h5>Enlaces Rápidos</h5>
                     <nav>
                         <ul class="list-unstyled">
-                            <li><a href="#" class="text-white text-decoration-none">Políticas de Devolución</a></li>
-                            <li><a href="#" class="text-white text-decoration-none">Términos y Condiciones</a></li>
+                            <li><a href="./pages/politicasYdevoluciones.html" class="text-white text-decoration-none">Políticas de Devolución</a></li>
+                            <li><a href="./pages/terminosYcondiciones.html" class="text-white text-decoration-none">Términos y Condiciones</a></li>
                         </ul>
                     </nav>
                 </section>

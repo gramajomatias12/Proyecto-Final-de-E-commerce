@@ -13,27 +13,28 @@ body {
   font-style: normal;
 }
 
+/* Carrito */
 .cart-wrapper {
     position: relative;
 }
 
-/* Botón circular real */
 .btn-cart {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     background: #ffc107;
     border: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: 25px;
     position: relative;
     cursor: pointer;
     transition: .3s ease;
+    text-decoration: none;
+    color: #28a745;
 }
 
-/* Hover elegante */
 .btn-cart:hover {
     background: #e0a800;
     transform: scale(1.05);
@@ -55,37 +56,83 @@ body {
     align-items: center;
     justify-content: center;
     padding: 0 5px;
-    border: 2px solid #ffc107;
+    border: 1.5px solid #ffc107;
 }
 
+/* carrusel */
 .height-imagen {
    width: 100%;
    height: 500px;
    object-fit: cover;
 }
 
-
+/* Productos */
 .producto-card {
-    border: 1px solid #ddd;
-    margin: 10px;
-    padding: 10px;
-    width: 300px;
-    display: inline-block;
-    vertical-align: top;
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: .3s ease;
 }
 
-.producto-card img {
+.producto-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.14);
+}
+
+.producto-img-wrapper {
+    width: 100%;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.producto-img-wrapper img {
+    max-height: 100%;
     max-width: 100%;
-    height: 150px;
     object-fit: contain;
 }
 
-#contador-carrito {
-    margin: 20px;
-    font-weight: bold;
+.producto-card h3 {
+    font-size: 15px;
+    min-height: 48px;
+    margin: 10px 0;
 }
 
-#vaciar-carrito {
+
+.producto-card p {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #28a745;
+    margin-top: auto;
+}
+
+.btn-agregar {
+    background: linear-gradient(135deg,#ffc107,#ff9800);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 25px;
+    color: #333;
+    font-weight: 600;
+    transition: .3s ease;
+}
+
+.btn-agregar:hover {
+    background: linear-gradient(135deg,#ffb300,#ff6f00);
+    transform: scale(1.05);
+}
+
+/* #contador-carrito {
+    margin: 20px;
+    font-weight: bold;
+} */
+
+/* #vaciar-carrito {
     margin: 10px 20px;
     padding: 8px 15px;
     background-color: red;
@@ -96,7 +143,7 @@ body {
 
 #vaciar-carrito:hover {
     background-color: darkred;
-}
+} */
 
 /* mensaje de carga */
 #mensaje-cargando {
@@ -105,24 +152,3 @@ body {
     margin: 20px;
 }
 
-/* 1. Contenedor de la Fila: Asegura que la fila use Flexbox para la alineación vertical */
-.row.align-items-center {
-    /* Opcional: Establece una altura mínima para ver el efecto en el viewport */
-    min-height: 400px; 
-}
-
-/* 2. Columna de la Imagen: Ajusta la imagen para que llene el espacio */
-.row.align-items-center .col-md-6 img {
-    /* Asegura que la imagen ocupe todo el ancho de su columna */
-    width: 100%; 
-    /* Mantiene la proporción de la imagen */
-    height: auto; 
-}
-
-/* 3. Columna del Texto: Opcional, pero ayuda a que el texto se vea bien */
-.row.align-items-center .col-md-6 p {
-    /* Añade un poco de espacio en los párrafos para mejorar la legibilidad */
-    margin-bottom: 1.5rem; 
-    line-height: 1.6;
-    font-size: 1.15rem;
-}

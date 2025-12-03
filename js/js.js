@@ -1,16 +1,16 @@
 // Función para manejar la visibilidad del modal (sustituto del data-bs-toggle)
-        function toggleModal(id) {
-            const modal = document.getElementById(id);
-            if (modal.classList.contains('modal-open')) {
-                modal.classList.remove('modal-open');
-                // Habilitar scroll del cuerpo
-                document.body.style.overflow = '';
-            } else {
-                modal.classList.add('modal-open');
-                // Deshabilitar scroll del cuerpo mientras el modal está abierto
-                document.body.style.overflow = 'hidden';
-            }
-        }
+function toggleModal(id) {
+    const modal = document.getElementById(id);
+    if (modal.classList.contains('modal-open')) {
+        modal.classList.remove('modal-open');
+        // Habilitar scroll del cuerpo
+        document.body.style.overflow = '';
+    } else {
+        modal.classList.add('modal-open');
+        // Deshabilitar scroll del cuerpo mientras el modal está abierto
+        document.body.style.overflow = 'hidden';
+    }
+}
 // ===========================================
 // 1️ OBTENER PRODUCTOS DESDE LA API
 // ===========================================
@@ -26,12 +26,20 @@ fetch('https://fakestoreapi.com/products')
             const card = document.createElement('div');
             card.className = 'producto-card';
             card.innerHTML = `
-            <img src="${producto.image}" alt="${producto.title}">
-            <h3>${producto.title}</h3>
+            <div class="producto-img-wrapper">
+                <img src="${producto.image}" alt="${producto.title}">
+            </div>
+            <h3 title="${producto.title}">
+                ${producto.title.length > 40 ? producto.title.substring(0, 40) + '...' : producto.title}
+            </h3>
             <p>$${producto.price}</p>
-            <button data-id="${producto.id}">Añadir al carrito</button>
+            <button class="btn-agregar" data-id="${producto.id}">
+                <i class="fa fa-cart-plus"></i> Agregar
+            </button>
             `;
             contenedor.appendChild(card);
+            card.classList.add('col-xl-3','col-lg-4','col-md-6','col-sm-12');
+
         });
         // Activar eventos
         cargarEventosAgregar();
@@ -43,7 +51,7 @@ fetch('https://fakestoreapi.com/products')
             error.message;
     });
 
-    // ===========================================
+// ===========================================
 // 2️ FUNCIÓN PARA OBTENER EL CARRITO ACTUAL
 // ===========================================
 function obtenerCarrito() {
@@ -92,4 +100,4 @@ document.getElementById('vaciar-carrito').addEventListener('click',
         localStorage.removeItem('carrito');
         actualizarContador();
         alert('Carrito vaciado correctamente');
-});
+    });
