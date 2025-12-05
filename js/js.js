@@ -108,3 +108,10 @@ document.getElementById('vaciar-carrito').addEventListener('click',
 // 8️ ACTUALIZAR EL CONTADOR AL CARGAR LA PÁGINA O VOLVER A ELLA
 // ==========================================
 document.addEventListener("DOMContentLoaded", actualizarContador);
+
+window.addEventListener('pageshow', (event) => {
+    // Si la página se está cargando desde la caché (back/forward del navegador), actualiza.
+    if (event.persisted) {
+        actualizarContador();
+    }
+});
