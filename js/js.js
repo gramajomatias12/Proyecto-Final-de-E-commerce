@@ -93,6 +93,8 @@ function cargarEventosAgregar() {
         });
     });
 }
+
+// ==========================================
 // 7️ FUNCIÓN PARA VACIAR EL CARRITO Y RESETEAR CONTADOR
 // ======================================================
 document.getElementById('vaciar-carrito').addEventListener('click',
@@ -101,3 +103,8 @@ document.getElementById('vaciar-carrito').addEventListener('click',
         actualizarContador();
         alert('Carrito vaciado correctamente');
     });
+
+// ==========================================
+// 8️ ACTUALIZAR EL CONTADOR AL CARGAR LA PÁGINA O VOLVER A ELLA
+// ==========================================
+document.addEventListener("DOMContentLoaded", actualizarContador);
