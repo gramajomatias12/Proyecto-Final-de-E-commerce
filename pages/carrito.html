@@ -114,8 +114,6 @@
                     <tr>
                         <th>Producto</th>
                         <th>Precio</th>
-                        <th>Cantidad</th>
-                        <th>Subtotal</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -138,12 +136,6 @@
                     </td>
 
                     <td data-label="Precio">${formatCurrency(p.price)}</td>
-
-                    <td data-label="Cantidad">
-                        <input class="qty" type="number" min="1" value="${p.quantity}" data-index="${index}">
-                    </td>
-
-                    <td data-label="Subtotal">${formatCurrency(subtotal)}</td>
 
                     <td>
                         <button class="btn ghost remove" data-index="${index}">Eliminar</button>
