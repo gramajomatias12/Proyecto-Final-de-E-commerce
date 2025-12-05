@@ -2,8 +2,8 @@
 
 ## Autoría e Información del Proyecto
 * **Autor:** Gramajo Matías
-* **Versión:** 1.0 (Proyecto Final)
-* **Fecha de Última Actualización:** 25-11-2025
+* **Versión:** Versión Final
+* **Fecha de Última Actualización:** 05-12-2025
 
 ---
 
@@ -73,4 +73,4 @@ El documento HTML dividido en las etiquetas semánticas principales:
 
 Este proyecto está alojado en un servicio de *hosting* gratuito (GitHub Pages).
 
-**URL Funcional del Sitio:** *https://gramajomatias12.github.io/...*
+**URL Funcional del Sitio:** *https://gramajomatias12.github.io/Proyecto-Final-de-E-commerce/*

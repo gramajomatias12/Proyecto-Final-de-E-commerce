@@ -1,4 +1,6 @@
-// Función para manejar la visibilidad del modal (sustituto del data-bs-toggle)
+// ===========================================
+// 0️⃣ Función para manejar la visibilidad del modal
+// ===========================================
 function toggleModal(id) {
     const modal = document.getElementById(id);
     if (modal.classList.contains('modal-open')) {
@@ -93,19 +95,8 @@ function cargarEventosAgregar() {
         });
     });
 }
-
 // ==========================================
-// 7️ FUNCIÓN PARA VACIAR EL CARRITO Y RESETEAR CONTADOR
-// ======================================================
-// document.getElementById('vaciar-carrito').addEventListener('click',
-//     () => {
-//         localStorage.removeItem('carrito');
-//         actualizarContador();
-//         alert('Carrito vaciado correctamente');
-//     });
-
-// ==========================================
-// 8️ ACTUALIZAR EL CONTADOR AL CARGAR LA PÁGINA O VOLVER A ELLA
+// 7️ ACTUALIZAR EL CONTADOR AL CARGAR LA PÁGINA O VOLVER A ELLA
 // ==========================================
 document.addEventListener("DOMContentLoaded", actualizarContador);
 
