@@ -97,12 +97,12 @@ function cargarEventosAgregar() {
 // ==========================================
 // 7️ FUNCIÓN PARA VACIAR EL CARRITO Y RESETEAR CONTADOR
 // ======================================================
-document.getElementById('vaciar-carrito').addEventListener('click',
-    () => {
-        localStorage.removeItem('carrito');
-        actualizarContador();
-        alert('Carrito vaciado correctamente');
-    });
+// document.getElementById('vaciar-carrito').addEventListener('click',
+//     () => {
+//         localStorage.removeItem('carrito');
+//         actualizarContador();
+//         alert('Carrito vaciado correctamente');
+//     });
 
 // ==========================================
 // 8️ ACTUALIZAR EL CONTADOR AL CARGAR LA PÁGINA O VOLVER A ELLA
@@ -110,7 +110,6 @@ document.getElementById('vaciar-carrito').addEventListener('click',
 document.addEventListener("DOMContentLoaded", actualizarContador);
 
 window.addEventListener('pageshow', (event) => {
-    // Si la página se está cargando desde la caché (back/forward del navegador), actualiza.
     if (event.persisted) {
         actualizarContador();
     }
